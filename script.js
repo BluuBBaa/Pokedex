@@ -9,7 +9,7 @@ async function loadPokemon(){
     let response = await fetch(url);
     currentPokemon = await response.json();
 
-    console.log('Loaded Pokemon',currentPokemon);
+    /**console.log('Loaded Pokemon',currentPokemon);**/
 
     renderPokemonInfo();
 
