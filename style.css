@@ -13,10 +13,39 @@ h3 {
     padding-top: 80px;
 }
 
+h5 {
+    color:black;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+td {
+    width: 200px !important;
+}
+
+.pr-10 {
+    padding-right: 20px !important;
+}
+
+
 .center{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.grey {
+    color:#ABAFB3 !important;
+}
+
+.lightblack {
+    color:#656769c0 !important;
+}
+
+.bold {
+    font-weight:bold !important;
 }
 
 .button-18 {
@@ -54,7 +83,7 @@ h3 {
 
 :hover.links {
     text-decoration-color: blue !important;
-    text-decoration-thickness: 5px !important;
+    text-decoration-thickness: 3px !important;
     text-decoration: underline;
     cursor: pointer;
 }
@@ -82,15 +111,19 @@ h3 {
     margin: 50px;
 }
 
+.padding {
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top: 5px;
+}
 .mainData {
     padding-top: 60px;
     padding-left: 20px;
     padding-right: 20px;
-    height: 50vh;
+    height: 60vh;
     margin-top: -160px;
     background-color: white;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
+ border-radius: 50px;
 
 }
 
@@ -99,3 +132,22 @@ h3 {
         justify-content: space-evenly;
         margin-top: 50px;
 }
+
+.gender-info {
+    display: flex !important;
+    align-items: center !important;
+    margin-right: 10px !important; /* Abstand zwischen den Elementen */
+}
+
+.gender-info img {
+    padding-right: 20px !important;
+    
+}
+
+#evoIMG {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    min-height: 150px;
+}
+
