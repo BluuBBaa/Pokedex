@@ -88,6 +88,10 @@ td {
     cursor: pointer;
 }
  
+#details {
+    height:400px ;
+    overflow-y: auto;
+}
 
 #pokedex {
     display: block;
