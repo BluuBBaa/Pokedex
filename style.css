@@ -87,6 +87,11 @@ td {
     text-decoration: underline;
     cursor: pointer;
 }
+
+#movesTable {
+    color:black;
+    text-align: center;
+}
  
 
 #pokedex {

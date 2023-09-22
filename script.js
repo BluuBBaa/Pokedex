@@ -10,7 +10,7 @@ async function loadPokemon() {
     let response = await fetch(url);
     currentPokemon = await response.json();
 
-    console.log('Loaded Pokemon',currentPokemon);
+    console.log('Loaded Pokemon', currentPokemon);
 
     renderPokemonInfo();
 
@@ -47,10 +47,9 @@ function includeHTML() {
 }
 
 function renderStats() {
-     document.getElementById('details').innerHTML = '';
+    document.getElementById('details').innerHTML = '';
 
     const link = document.createElement('div');
-    
     let templateToLoad = '';
     const hoveredLink = document.querySelector('#dataLinks .links:hover');
 
@@ -61,8 +60,9 @@ function renderStats() {
             templateToLoad = 'evosheet.html';
         } else if (hoveredLink.textContent === 'Moves') {
             templateToLoad = 'movessheet.html';
+           
         } else if (hoveredLink.textContent === 'About') {
-            templateToLoad ='datasheet.html';
+            templateToLoad = 'datasheet.html';
         }
     }
 
