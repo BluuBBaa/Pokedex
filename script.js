@@ -7,7 +7,7 @@ function init() {
 }
 
 async function loadPokemon() {
-    let url = 'https://pokeapi.co/api/v2/pokemon/pikachu';
+    let url = 'https://pokeapi.co/api/v2/pokemon/charmander';
     let response = await fetch(url);
     currentPokemon = await response.json();
 
@@ -47,26 +47,23 @@ function includeHTML() {
     }
 }
 
-function renderStats() {
+function renderTemplates() {
     document.getElementById('details').innerHTML = '';
 
     const link = document.createElement('div');
     let templateToLoad = '';
     const hoveredLink = document.querySelector('#dataLinks .links:hover');
 
-    if (hoveredLink) {
-        if (hoveredLink.textContent === 'Base Stats') {
-            templateToLoad = 'aboutsheet.html';
-        } else if (hoveredLink.textContent === 'Evolution') {
-            templateToLoad = 'evosheet.html';
-        } else if (hoveredLink.textContent === 'Moves') {
-            loadMoves();
-            templateToLoad = 'movessheet.html';
-         
-         
-        } else if (hoveredLink.textContent === 'About') {
-            templateToLoad = 'datasheet.html';
-        }
+    if (hoveredLink.textContent === 'Base Stats') {
+        templateToLoad = 'aboutsheet.html';
+    } else if (hoveredLink.textContent === 'Evolution') {
+        loadEvo();
+        templateToLoad = 'evosheet.html';
+    } else if (hoveredLink.textContent === 'Moves') {
+        loadMoves();
+        templateToLoad = 'movessheet.html';        
+    } else if (hoveredLink.textContent === 'About') {
+        templateToLoad = 'datasheet.html';
     }
 
     link.setAttribute('w3-include-html', templateToLoad);
@@ -120,4 +117,20 @@ async function loadMoves() {
       console.error('Fehler beim Laden der movessheet.html:', error);
     }
   }
+
+  async function loadEvo() {
+    try {
+        const response = await fetch('evosheet.html');
+        const htmlContent = await response.text();
+        document.getElementById('details').innerHTML = htmlContent;
+
+        // Aktualisiere das Bild der Grundform in der ersten 'div' mit 'id="evoIMG"'
+        document.getElementById('baseFormImg').src = currentPokemon['sprites']['other']['official-artwork']['front_default'];
+
+        // Hier kannst du den Rest deiner Logik für die Evolution einfügen
+        // ...
+    } catch (error) {
+        console.error('Fehler beim Laden der evosheet.html:', error);
+    }
+}
 
