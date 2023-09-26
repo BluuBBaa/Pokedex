@@ -80,23 +80,20 @@ function renderStats() {
 async function renderMoves() {
     
     const movesTable = document.getElementById('movesTable');
-
-    // Leeren Sie die Tabelle, um vorhandene Daten zu entfernen
     movesTable.innerHTML = '';
 
-    // Laden Sie die Moves-Daten
-    try {
+       try {
         const response = await fetch('https://pokeapi.co/api/v2/pokemon/pikachu');
         const data = await response.json();
         const moves = data.moves;
 
-        // Überprüfen, ob Moves vorhanden sind
+   
         if (moves.length === 0) {
             const row = movesTable.insertRow();
             const noMovesCell = row.insertCell(0);
             noMovesCell.textContent = 'No moves available.';
         } else {
-            // Tabelle mit Moves füllen
+           
             const tbody = document.createElement('tbody');
             moves.forEach((moveData) => {
                 const move = moveData.move;
@@ -124,3 +121,4 @@ async function loadMoves() {
       console.error('Fehler beim Laden der movessheet.html:', error);
     }
   }
+
