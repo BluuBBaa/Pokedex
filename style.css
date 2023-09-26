@@ -93,6 +93,10 @@ td {
     text-align: center;
 }
  
+#details {
+    height:400px ;
+    overflow-y: auto;
+}
 
 #pokedex {
     display: block;

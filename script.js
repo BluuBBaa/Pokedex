@@ -3,6 +3,7 @@ let currentPokemon;
 function init() {
     loadPokemon();
     includeHTML();
+    
 }
 
 async function loadPokemon() {
@@ -13,7 +14,7 @@ async function loadPokemon() {
     console.log('Loaded Pokemon', currentPokemon);
 
     renderPokemonInfo();
-
+    
 }
 
 function renderPokemonInfo() {
@@ -59,8 +60,10 @@ function renderStats() {
         } else if (hoveredLink.textContent === 'Evolution') {
             templateToLoad = 'evosheet.html';
         } else if (hoveredLink.textContent === 'Moves') {
+            loadMoves();
             templateToLoad = 'movessheet.html';
-           
+         
+         
         } else if (hoveredLink.textContent === 'About') {
             templateToLoad = 'datasheet.html';
         }
@@ -72,4 +75,49 @@ function renderStats() {
 }
 
 
+
+async function renderMoves() {
+    
+    const movesTable = document.getElementById('movesTable');
+    movesTable.innerHTML = '';
+
+       try {
+        const response = await fetch('https://pokeapi.co/api/v2/pokemon/pikachu');
+        const data = await response.json();
+        const moves = data.moves;
+
+   
+        if (moves.length === 0) {
+            const row = movesTable.insertRow();
+            const noMovesCell = row.insertCell(0);
+            noMovesCell.textContent = 'No moves available.';
+        } else {
+           
+            const tbody = document.createElement('tbody');
+            moves.forEach((moveData) => {
+                const move = moveData.move;
+                const row = tbody.insertRow();
+                const nameCell = row.insertCell(0);
+
+                nameCell.textContent = move.name;
+            });
+            movesTable.appendChild(tbody);
+        }
+    } catch (error) {
+        console.error('Fehler beim Laden der Moves:', error);
+    }
+}
+
+async function loadMoves() {
+    try {
+      const response = await fetch('movessheet.html');
+      const htmlContent = await response.text();
+      document.getElementById('details').innerHTML = htmlContent;
+      
+      renderMoves();
+
+    } catch (error) {
+      console.error('Fehler beim Laden der movessheet.html:', error);
+    }
+  }
 
